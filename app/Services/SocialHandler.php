@@ -7,17 +7,19 @@ use App\Contracts\SocialHandlerInterface;
 
 class SocialHandler implements SocialHandlerInterface
 {
-
-    function __construct()
+    private $socialLogin;
+    
+    function __construct(LoginOption $socialLogin)
     {
+        $this->socialLogin = $socialLogin;
     }
 
-    public function Handlelogin(LoginOption $socialLogin)
+    public function Handlelogin()
     {
-        return  $socialLogin->login();
+        return  $this->socialLogin->login();
     }
-    public function HandleRedirect(LoginOption $socialLogin)
+    public function HandleRedirect()
     {
-        return $socialLogin->redirect();
+        return $this->socialLogin->redirect();
     }
 }
