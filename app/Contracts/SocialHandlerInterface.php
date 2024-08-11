@@ -2,6 +2,6 @@
 namespace App\Contracts;
 
 interface SocialHandlerInterface{
-    public function Handlelogin(LoginOption $loginOption);
-    public function HandleRedirect(LoginOption $loginlLogin);
+    public function Handlelogin();
+    public function HandleRedirect();
 }
