@@ -1,9 +1,16 @@
 <script setup>
+import Button from "primevue/button";
 import MainTemplate from "./MainTemplate.vue";
 const user = defineProps(['user'])
+
 </script>
 
 <template>
+    <div class="card flex justify-center gap-4">
+        <Button label="Link" link />
+        <Button as="a" label="External" href="https://vuejs.org/" target="_blank" rel="noopener" />
+        <Button as="router-link" label="Router" to="/" />
+    </div>
     <MainTemplate>
         <a class="google-login" href="/auth/redirect/google">Login With google</a>  
         <div v-if="user.user">
@@ -15,14 +22,5 @@ const user = defineProps(['user'])
 </template>
 
 <style>
-.google-login{
-    border: 1px solid red;
-    padding: 1rem;
-    width: fit-content;
-    height: 1rem;
-    text-decoration: none;
-    color: white;
-    background-color: rgba(255, 0, 0, 0.831)
-}
 
 </style>
