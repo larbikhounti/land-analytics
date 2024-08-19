@@ -5,7 +5,6 @@ namespace App\Services\LoginOptions;
 
 use App\Contracts\GoogleRepositoryInterface;
 use App\Contracts\LoginOption;
-use App\Models\User;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,6 +30,5 @@ class google implements LoginOption
         Auth::login($user, true);
 
         return  Auth::check();
-        
     }
 }

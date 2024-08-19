@@ -6,7 +6,6 @@ use App\Contracts\SocialServiceInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-
 class AuthController extends Controller
 {
 
@@ -17,9 +16,8 @@ class AuthController extends Controller
 
    function callback(SocialServiceInterface $socialService)
    {
-      if($socialService->callback()){
-         return redirect()->route('/');
+      if ($socialService->callback()) {
+         return redirect("/");
       }
-      
    }
 }

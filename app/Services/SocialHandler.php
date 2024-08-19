@@ -16,7 +16,12 @@ class SocialHandler implements SocialHandlerInterface
 
     public function Handlelogin()
     {
-        return  $this->socialLogin->login();
+        try {
+            return  $this->socialLogin->login();
+        } catch (\Throwable $th) {
+            return redirect('/');
+        }
+        
     }
     public function HandleRedirect()
     {
