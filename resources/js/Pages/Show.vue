@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps(['user'])
+const {user} = defineProps(['user'])
 </script>
 
 <template>
- <p>hello</p>
+ <p>hello : {{ user.name }}</p>
 </template>
