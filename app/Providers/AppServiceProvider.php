@@ -6,6 +6,8 @@ use App\Contracts\GoogleRepositoryInterface;
 use App\Contracts\LoginOption;
 use App\Contracts\SocialHandlerInterface;
 use App\Contracts\SocialServiceInterface;
+use App\Contracts\UserDtoInterface;
+use App\Dtos\userDto;
 use App\repositories\GoogleRepository;
 use App\Services\LoginOptions\google;
 use App\Services\SocialHandler;
@@ -22,6 +24,7 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(SocialHandlerInterface::class, SocialHandler::class);
         $this->app->bind(SocialServiceInterface::class , SocialService::class);
         $this->app->bind(GoogleRepositoryInterface::class , GoogleRepository::class);
+        $this->app->bind(UserDtoInterface::class , userDto::class);
         $this->app->bind(LoginOption::class, function ($app) {
             if (request()->socialtype ?? session("social_type")  == 'google') {
                 return $app->make(google::class);
