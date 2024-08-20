@@ -11,12 +11,14 @@ use Illuminate\Support\Facades\Auth;
         $this->user =  Auth::user();
     }
     function GetUser() {
-        if($this->user){
+   
+        if(Auth::user()){
+          $user = Auth::user();
             return [
-                'id' => $this->user->id,
-                'name' => $this->user->name,
-                'email' => $this->user->email,
-                'ad_id' => $this->user->ad_id
+                'id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+                'ad_id' => $user->ad_id
             ];
         }
     }
