@@ -7,7 +7,7 @@ use Inertia\Inertia;
 class HomeController extends Controller
 {
     public function index(UserDtoInterface $user) {
-        return Inertia::render('Show', [
+        return Inertia::render('Main', [
             'user' => $user->getUser()
         ]);
     }
