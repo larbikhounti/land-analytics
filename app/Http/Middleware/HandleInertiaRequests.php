@@ -2,11 +2,17 @@
 
 namespace App\Http\Middleware;
 
+use App\Contracts\UserDtoInterface;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Middleware;
 
 class HandleInertiaRequests extends Middleware
 {
+    protected $user;
+    public function __construct(UserDtoInterface $user) {
+        $this->user = $user;
+    }
     /**
      * The root template that's loaded on the first page visit.
      *
@@ -33,10 +39,11 @@ class HandleInertiaRequests extends Middleware
      *
      * @return array<string, mixed>
      */
-    public function share(Request $request): array
+    public function share(Request $request)
     {
+       $user =  $this->user->getUser();
         return array_merge(parent::share($request), [
-            //
+                'auth' => Auth::user() ? ['user' => $user] : ['user' => null]
         ]);
     }
 }
