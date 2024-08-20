@@ -1,1 +1,3 @@
-##  is a project to track  the time the user visists tell he/her made a call to action 
+# Project Description: Time Tracking from Landing Action
+
+This project aims to provide a comprehensive time-tracking solution specifically designed to monitor and log the time spent from the moment a key action is initiated, such as landing on a webpage or application. By capturing this crucial starting point, the system tracks various activities, helping users analyze their productivity and efficiency. The solution includes customizable features that allow users to measure time intervals, generate reports, and gain insights into workflow patterns. Perfect for individuals and teams looking to optimize their time management and performance.
