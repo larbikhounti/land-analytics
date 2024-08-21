@@ -1,7 +1,7 @@
 <script setup>
 import { user } from "../countables/auth";
-
-const id = user.value?.id
+import GoogleLogin from "./components/GoogleLogin.vue";
+const authId = user.value?.id
 </script>
 
 <template>
@@ -14,19 +14,10 @@ const id = user.value?.id
         <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56">
 
             <div class="text-center">
-                <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">Data to enrich your online
-                    business</h1>
-                <p class="mt-6 text-lg leading-8 text-gray-600">Anim aute id magna aliqua ad ad non deserunt sunt. Qui
-                    irure qui lorem cupidatat commodo. Elit sunt amet fugiat veniam occaecat fugiat aliqua.</p>
+                <h1 class="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">Track Time from the Moment Users Arrive to Every Action They Take.</h1>
+                <p class="mt-6 text-lg leading-8 text-gray-600">Easily monitor user activity from their first interaction to their final action. Our solution provides real-time insights into user behavior, helping you optimize workflows and enhance productivity.</p>
                 <div class="mt-10 flex items-center justify-center gap-x-6">
-                    <a v-if="id" href="#"
-                        class="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Dashboard
-                        <span aria-hidden="true">&rarr;</span>
-                    </a>
-                    <a v-else href="/auth/redirect/google"
-                        class="rounded-md bg-red-600 px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Login
-                        with google
-                    </a>
+                   <GoogleLogin :authId="authId" />
                 </div>
             </div>
         </div>
