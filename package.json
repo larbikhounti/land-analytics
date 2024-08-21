@@ -19,6 +19,7 @@
         "@inertiajs/vue3": "^1.2.0",
         "@primevue/themes": "^4.0.4",
         "@vitejs/plugin-vue": "^5.1.2",
+        "path": "^0.12.7",
         "primevue": "^4.0.4"
     }
 }
