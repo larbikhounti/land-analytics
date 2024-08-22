@@ -18,7 +18,7 @@ class AuthController extends Controller
    function callback(SocialServiceInterface $socialService)
    {
       if ($socialService->callback()) {
-         return redirect("/");
+         return redirect("/dashboard");
       }
    }
 
