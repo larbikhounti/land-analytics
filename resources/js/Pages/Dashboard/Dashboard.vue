@@ -12,15 +12,15 @@ import BestPages from './components/BestPages.vue';
                 </div>
                 <div class=" text-gray-400 bg-slate-200 border border-gray-400 p-5 text-center">
                   <h1 class="text-black font-bold text-3xl">Total Clicks</h1> 
-                  <p class="text-green-500 font-bold  text-2xl">300</p>
+                  <p class="text-green-500 font-bold  text-2xl">10</p>
                 </div>
                 <div class=" text-gray-400 bg-slate-200 border border-gray-400 p-5 text-center">
                   <h1 class="text-black font-bold text-2xl">Average Click Time</h1> 
-                  <p class="text-green-500 font-bold text-2xl">300</p>
+                  <p class="text-green-500 font-bold text-2xl">20 min</p>
                 </div>
             </div>
             
-                <BestPages title="Best Pages"/>
+                <BestPages title="Best performing "/>
             
             
             
