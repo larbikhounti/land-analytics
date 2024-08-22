@@ -11,10 +11,13 @@ Route::get('/auth/redirect/{socialtype}',[AuthController::class,"redirect"]);
 Route::get('/auth/callback',[AuthController::class, "callback"]);
 
 Route::get('/',[HomeController::class,"index"])->name("/");
-Route::get('/dashboard',[DashBoardController::class,"index"])->name("/");
+Route::get('/login',[HomeController::class,"index"])->name("login");
 
-Route::get('/logout', function () {
-    return Auth::logout();
+Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard',[DashBoardController::class,"index"]);
+    Route::get('/logout', [AuthController::class, "logOut"]) ;
 });
+
+
 
 
