@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Contracts\SocialServiceInterface;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -17,7 +18,12 @@ class AuthController extends Controller
    function callback(SocialServiceInterface $socialService)
    {
       if ($socialService->callback()) {
-         return redirect("/");
+         return redirect("/dashboard");
       }
+   }
+
+   function logOut() {
+      Auth::logout();
+      redirect('/');
    }
 }

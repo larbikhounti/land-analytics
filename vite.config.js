@@ -12,7 +12,8 @@ export default defineConfig({
         vue()],
     resolve: {
             alias: {
-              '@images': path.resolve(__dirname, 'resources/images'), // Alias for the resources/images folder
+              '@images': path.resolve(__dirname, 'resources/images'),
+              '@dashboard': path.resolve(__dirname, 'resources/js/Pages/Dashboard/'),
             },
           },    
     // resolve: name => {
