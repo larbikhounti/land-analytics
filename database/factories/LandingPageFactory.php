@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +19,8 @@ class LandingPageFactory extends Factory
     {
         return [
            'url' => fake()->url(),
-           'name' => fake()->name()
+           'name' => fake()->name(),
+           'ad_id' => fake()->numberBetween(1,1000)
         ];
     }
 }
