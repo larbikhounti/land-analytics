@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\AuthController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LandingPageController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -14,8 +15,10 @@ Route::get('/login',[HomeController::class,"index"])->name("login");
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard',[DashBoardController::class,"index"]);
-    Route::get('/logout', [AuthController::class, "logOut"]) ;
+    Route::get('/logout', [AuthController::class, "logOut"]);
 });
+
+Route::resource('/pages', LandingPageController::class);
 
 
 
