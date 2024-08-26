@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class LandingPage extends Model
 {
-    use HasFactory;
+    use HasFactory, HasFactory;
 
     protected $fillable = [
         'name',

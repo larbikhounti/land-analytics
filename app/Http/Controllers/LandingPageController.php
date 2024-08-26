@@ -22,11 +22,7 @@ class LandingPageController extends Controller
         ]);
 
         $land = new LandingPage();
-        if (!$land->save($request->all())) {
-            return false;
-        }
-
-        return true;
+        return $land->save($request->all());
     }
     function show() {}
 
@@ -37,17 +33,11 @@ class LandingPageController extends Controller
             'name' => 'string'
         ]);
 
-        if (!$page->update($request->all())) {
-            return false;
-        }
+        return $page->update($request->all());
     }
 
     function destroy(LandingPage $page)
     {
-        if (!$page->delete()) {
-            return false;
-        }
-
-        return true;
+        return $page->delete();
     }
 }
