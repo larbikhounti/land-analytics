@@ -4,9 +4,9 @@ import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue'
 
 const links = ref([
-    {href : "#", content : "Home" },
-    {href : "#", content : "Pages" },
-    {href : "#", content : "Profile" }
+    {href : "/dashboard", content : "Dashboard" },
+    {href : "/pages", content : "Pages" },
+    {href : "/profile", content : "Profile" }
 ])
 </script>
 

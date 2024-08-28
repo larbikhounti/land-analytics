@@ -52,8 +52,8 @@ const people = ref([
 </script>
 
 <template>
-    <div class="bg-white p-8">
-        <h1 class="my-5 text-black font-bold text-xl">{{props.title}} </h1>
+    <div class="bg-white p-8 max-h-full">
+        <h1 class=" text-black font-bold text-xl">{{props.title}} </h1>
     <ul visits="list" class="divide-y divide-gray-100">
         <li v-for="person in people" :key="person.ult" class="flex justify-between gap-x-6 py-2">
             <div class="flex min-w-0 gap-x-4">

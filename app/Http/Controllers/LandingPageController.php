@@ -4,13 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\LandingPage;
 use Illuminate\Http\Request;
-
+use Inertia\Inertia;
 class LandingPageController extends Controller
 {
 
-    function index()
+    public function index()
     {
-        return LandingPage::all();
+        return Inertia::render('Dashboard/Pages');
     }
 
     function store(Request $request)
