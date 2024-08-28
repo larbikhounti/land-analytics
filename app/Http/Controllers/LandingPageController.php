@@ -3,14 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\LandingPage;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 class LandingPageController extends Controller
 {
 
     public function index()
     {
-        return Inertia::render('Dashboard/Pages');
+        $pages = LandingPage::where('user_id',Auth::user()->id)->get();
+        return Inertia::render('Dashboard/Pages',[
+            "pages" => $pages
+        ]);
     }
 
     function store(Request $request)
@@ -20,9 +25,21 @@ class LandingPageController extends Controller
             'url' => 'string|url',
             'name' => 'string'
         ]);
+        
+ 
+        $user =  User::find(Auth::user()->id);
+        $page =  $user->pages()->create([
+            'name'  => $request->name,
+            'url'   => $request->url,
+            'ad_id' => 326745762534
+        ]);
 
-        $land = new LandingPage();
-        return $land->save($request->all());
+        if(!$page instanceof LandingPage){
+            return $this->index();
+        }
+
+        return $this->index();
+        
     }
     function show() {}
 
