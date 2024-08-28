@@ -31,18 +31,21 @@ class LandingPageController extends Controller
         $page =  $user->pages()->create([
             'name'  => $request->name,
             'url'   => $request->url,
-            'ad_id' => 326745762534
+            'ad_id' => 326745762534 // TODO : GENERATE AN ACTUAL RANDOM NUMBER OR UUID
         ]);
-
+        // TODO : IMPROVE ERROR HANDLING 
         if(!$page instanceof LandingPage){
+            // TODO : SEND AN ACTUAL ERROR
             return $this->index();
         }
 
+        // TODO : SEND AN ACTUAL SUCCESS MESSAGE 
         return $this->index();
         
     }
     function show() {}
 
+    // TODO : TEST THIS METHOD
     function update(Request $request, LandingPage $page)
     {
         $request->validate([
@@ -53,6 +56,7 @@ class LandingPageController extends Controller
         return $page->update($request->all());
     }
 
+    // TODO : TEST THIS METHOD
     function destroy(LandingPage $page)
     {
         return $page->delete();
