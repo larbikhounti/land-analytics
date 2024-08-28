@@ -13,6 +13,7 @@ class LandingPage extends Model
     protected $fillable = [
         'name',
         'url',
+        'ad_id'
     ];
 
     function User(): BelongsTo
