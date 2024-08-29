@@ -15,7 +15,7 @@ const clicked = ref(false)
 <template>
    <!-- SideLinks -->
           <nav class="mt-10 divide-y">
-            <Link @click="clicked = !clicked" :class="{'bg-black text-white': pathname(link.href) }" v-for="link in links" :href="link.href"  class="text-black  block py-2.5 px-4 rounded transition duration-200  ">
+            <Link  @click="clicked = !clicked" :class="{'bg-black text-white': pathname(link.href) }" v-for="link in links" :href="link.href"  class="text-black  min-w-56 block py-2.5 px-4 rounded transition duration-200  ">
               {{link.content}}
             </Link>
           </nav>
