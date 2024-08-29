@@ -21,6 +21,7 @@ class LandingPagesTest extends TestCase
         $page->name = fake()->name();
         $page->user_id = $user->id;
         $page->ad_id = fake()->randomLetter();
+        $page->tracked_button = fake()->randomLetter();
         $page->save();
 
         $this->assertModelExists($page);
@@ -28,15 +29,15 @@ class LandingPagesTest extends TestCase
 
     public function test_landing_page_can_be_updated(): void
     {
-        $landingPage = LandingPage::factory()->for(User::factory()->state([
+        $page = LandingPage::factory()->for(User::factory()->state([
             'name' => 'Jessica Archer',
         ]))->create();
 
 
-        $landingPage->url = fake()->url();
-        $landingPage->name = fake()->name();
-        $landingPage->ad_id = fake()->numberBetween(1,10000);
-        $result = $landingPage->update();
+        $page->url = fake()->url();
+        $page->name = fake()->name();
+        $page->ad_id = fake()->numberBetween(1,10000);
+        $result = $page->update();
 
         $this->assertTrue($result);
 
@@ -44,14 +45,14 @@ class LandingPagesTest extends TestCase
 
     public function test_landing_page_can_be_deleted(): void
     {
-        $landingPage = LandingPage::factory()->for(User::factory()->state([
+        $page = LandingPage::factory()->for(User::factory()->state([
             'name' => 'Jessica Archer',
         ]))->create();
 
 
-        $landingPage->delete();
+        $page->delete();
 
-        $this->assertModelMissing($landingPage);
+        $this->assertModelMissing($page);
 
     }
 }
