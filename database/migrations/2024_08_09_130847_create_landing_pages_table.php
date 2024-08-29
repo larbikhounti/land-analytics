@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("url")->nullable();
             $table->string("name");
             $table->string("ad_id");
+            $table->string("tracked_button");
             $table->foreignIdFor(User::class)->constrained()
             ->cascadeOnDelete()->cascadeOnUpdate();
 

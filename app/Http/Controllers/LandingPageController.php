@@ -21,17 +21,22 @@ class LandingPageController extends Controller
     function store(Request $request)
     {
 
+        
+
         $request->validate([
             'url' => 'string|url',
-            'name' => 'string'
+            'name' => 'string',
+            'trackedButton' => 'string'
         ]);
+
         
  
         $user =  User::find(Auth::user()->id);
         $page =  $user->pages()->create([
             'name'  => $request->name,
             'url'   => $request->url,
-            'ad_id' => 326745762534 // TODO : GENERATE AN ACTUAL RANDOM NUMBER OR UUID
+            'ad_id' => 326745762534, // TODO : GENERATE AN ACTUAL RANDOM NUMBER OR UUID.
+            "tracked_button" => $request->tracked_button
         ]);
         // TODO : IMPROVE ERROR HANDLING 
         if(!$page instanceof LandingPage){

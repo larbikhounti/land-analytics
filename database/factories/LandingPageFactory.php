@@ -20,7 +20,8 @@ class LandingPageFactory extends Factory
         return [
            'url' => fake()->url(),
            'name' => fake()->name(),
-           'ad_id' => fake()->numberBetween(1,1000)
+           'ad_id' => fake()->numberBetween(1,1000),
+           'tracked_button' => fake()->name()
         ];
     }
 }

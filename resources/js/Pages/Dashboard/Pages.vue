@@ -4,10 +4,12 @@ import { ref } from 'vue'
 const form = useForm({
     url: null,
     name: null,
-    trackedButton:null
+    tracked_button:null
 })
 let props = defineProps(['pages']);
 let showFrom = ref(false)
+
+console.log(props.pages)
 </script>
 <script>
 import DashboardLayout from './DashboardLayout.vue';
@@ -27,9 +29,9 @@ export default { layout: DashboardLayout }
             <input id="name" placeholder="Enter name" class="p-3  bg-gray-100" name="name" type="text"
                 v-model="form.name">
              <label for="tracked-button">Tracked button id</label>
-            <input id="tracked-button" placeholder="Tracked Button id" class="p-3  bg-gray-100" name="trackedButton" type="text"
-                v-model="form.trackedButton">    
-            <div v-if="form.errors.name">{{ form.errors.trackedButton }}</div>
+            <input id="tracked-button" placeholder="Tracked Button id" class="p-3  bg-gray-100" name="tracking_button" type="text"
+                v-model="form.tracked_button">    
+            <div v-if="form.errors.tracked_button">{{ form.errors.tracked_button }}</div>
             <button class="border border-black p-2 hover:bg-black hover:text-white  " type="submit"
                 :disabled="form.processing">{{ form.processing ? "saving... " : "save" }}</button>
 
@@ -41,6 +43,7 @@ export default { layout: DashboardLayout }
                     <th>Url</th>
                     <th>Views</th>
                     <th>Clicks</th>
+                    <th>Tracked Button</th>
                     <th>Average Click Time </th>
                 </tr>
             </thead>
@@ -49,7 +52,8 @@ export default { layout: DashboardLayout }
                     <td class="p-2">{{ page.name }}</td>
                     <td class="text-sm ">{{ page.url.slice(0, 30) }}</td>
                     <td>1961</td>
-                    <td>34</td>
+                    <td>20</td>
+                    <td>{{ page.tracked_button }}</td>
                     <td class="text-green-700">20 minutes</td>
                 </tr>
             </tbody>
