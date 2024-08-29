@@ -9,28 +9,27 @@ use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 class LandingPageController extends Controller
 {
+    protected $message = array(
+        'error' => null,
+        'message' => null
+    );
 
     public function index()
     {
         $pages = LandingPage::where('user_id',Auth::user()->id)->get();
         return Inertia::render('Dashboard/Pages',[
-            "pages" => $pages
+            "pages" => $pages,
+            'message' => $this->message,
         ]);
     }
 
     function store(Request $request)
     {
-
-        
-
         $request->validate([
             'url' => 'string|url',
             'name' => 'string',
             'trackedButton' => 'string'
         ]);
-
-        
- 
         $user =  User::find(Auth::user()->id);
         $page =  $user->pages()->create([
             'name'  => $request->name,
@@ -41,10 +40,14 @@ class LandingPageController extends Controller
         // TODO : IMPROVE ERROR HANDLING 
         if(!$page instanceof LandingPage){
             // TODO : SEND AN ACTUAL ERROR
+            $this->message['message'] = "Something went Wrong";
+            $this->message['error'] = true;
             return $this->index();
         }
 
         // TODO : SEND AN ACTUAL SUCCESS MESSAGE 
+        $this->message['message'] = "Record Added Succefully";
+        $this->message['error'] = false;
         return $this->index();
         
     }
