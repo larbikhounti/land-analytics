@@ -4,6 +4,7 @@ import { ref } from 'vue'
 const form = useForm({
     url: null,
     name: null,
+    trackedButton:null
 })
 let props = defineProps(['pages']);
 let showFrom = ref(false)
@@ -16,21 +17,24 @@ export default { layout: DashboardLayout }
 <template>
 
     <div class="flex flex-col ">
-    <button @click="showFrom = !showFrom" class="button bg-black text-white my-2 max-w-28 p-2">Add Page +</button>
-        <form v-if="showFrom" class="flex flex-col gap-3 p-5 w-60 bg-white" @submit.prevent="form.post('/pages')">
-            <label for="input">Url</label>
-            <input placeholder="Enter url" class="p-3 border-2 bg-gray-100" name="url" type="text"
+    <button @click="showFrom = !showFrom" class="button bg-black text-white my-2 max-w-28 p-2">Add  {{showFrom? '-' : '+'}}</button>
+        <form v-if="showFrom" class="flex flex-col gap-3 p-5 w-2/4 bg-white" @submit.prevent="form.post('/pages')">
+            <label for="url">Url</label>
+            <input id="url" placeholder="Enter url" class="p-3 border-2 bg-gray-100" name="url" type="text"
                 v-model="form.url">
             <div v-if="form.errors.url">{{ form.errors.url }}</div>
-            <label for="input">Name</label>
-            <input placeholder="Enter name" class="p-3  bg-gray-100" name="name" type="text"
+            <label for="name">Name</label>
+            <input id="name" placeholder="Enter name" class="p-3  bg-gray-100" name="name" type="text"
                 v-model="form.name">
-            <div v-if="form.errors.name">{{ form.errors.name }}</div>
+             <label for="tracked-button">Tracked button id</label>
+            <input id="tracked-button" placeholder="Tracked Button id" class="p-3  bg-gray-100" name="trackedButton" type="text"
+                v-model="form.trackedButton">    
+            <div v-if="form.errors.name">{{ form.errors.trackedButton }}</div>
             <button class="border border-black p-2 hover:bg-black hover:text-white  " type="submit"
                 :disabled="form.processing">{{ form.processing ? "saving... " : "save" }}</button>
 
         </form>
-        <table class="table-fixed w-3/4 bg-white  overflow-scroll max-h-screen">
+        <table v-if="!showFrom" class="table-fixed w-3/4 bg-white  overflow-scroll max-h-screen">
             <thead>
                 <tr class="text-left bg-black text-white px-3 ">
                     <th class="p-2">Name</th>
