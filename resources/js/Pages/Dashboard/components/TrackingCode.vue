@@ -10,7 +10,7 @@ function Scriptd(){
     
     Track('user_ad_id', ${props.user_ad_id}, 'auto')
     Track('page_ad_id', ${props.page_ad_id})
-    Track('tracked_button_id', ${props.tracked_button_id})
+    Track('tracked_button_id', '${props.tracked_button_id}')
 <\/script>`
 }
 </script>
