@@ -18,7 +18,6 @@ class LandingPageController extends Controller
     public function index(Request $request)
     {
         return Inertia::render('Dashboard/Pages', [
-            'message' => $this->message,
             'pages' => LandingPage::query()
                 ->when($request->input('search'), function ($query, $search) {
                     $query->where('name', 'like', "%{$search}%");
@@ -52,7 +51,7 @@ class LandingPageController extends Controller
         $page =  $user->pages()->create([
             'name'  => $request->name,
             'url'   => $request->url,
-            'ad_id' => 326745762534, // TODO : GENERATE AN ACTUAL RANDOM NUMBER OR UUID.
+            'ad_id' => rand(99999999,999999999), // TODO : GENERATE AN ACTUAL RANDOM NUMBER OR UUID.
             "tracked_button" => $request->tracked_button
         ]);
         // TODO : IMPROVE ERROR HANDLING 
@@ -60,13 +59,20 @@ class LandingPageController extends Controller
             // TODO : SEND AN ACTUAL ERROR
             $this->message['message'] = "Something went Wrong";
             $this->message['error'] = true;
-            return redirect('/pages');
+            return inertia::render('Dashboard/components/PageForm',[
+                'message' => $this->message
+            ]);
         }
 
         // TODO : SEND AN ACTUAL SUCCESS MESSAGE 
         $this->message['message'] = "Record Added Succefully";
         $this->message['error'] = false;
-        return redirect('/pages');
+        return inertia::render('Dashboard/components/PageForm',[
+            'user_ad_id' => $user->ad_id,
+            'page_ad_id' => $page->ad_id,
+            'tracked_button_id' => $page->tracked_button,
+            'message' => $this->message
+        ]);
     }
     function show() {}
 
