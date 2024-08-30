@@ -14,13 +14,25 @@ class LandingPageController extends Controller
         'message' => null
     );
 
-    public function index()
+    public function index(Request $request)
     {
-        $pages = LandingPage::where('user_id',Auth::user()->id)->get();
-        return Inertia::render('Dashboard/Pages',[
-            "pages" => $pages,
-            'message' => $this->message,
-        ]);
+            return Inertia::render('Dashboard/Pages', [
+                'message' => $this->message,
+                'pages' => LandingPage::query()
+                    ->when($request->input('search'), function ($query, $search) {
+                        $query->where('name', 'like', "%{$search}%");
+                    })
+                    ->paginate(10)
+                    ->withQueryString()
+                    ->through(fn($page) => [
+                        'id' => $page->id,
+                        'name' => $page->name,
+                        'url' => $page->url,
+                        'tracked_button' => $page->tracked_button
+                    ]),
+    
+                'filters' => $request->only(['search']),
+            ]);
     }
 
     function store(Request $request)
@@ -42,13 +54,13 @@ class LandingPageController extends Controller
             // TODO : SEND AN ACTUAL ERROR
             $this->message['message'] = "Something went Wrong";
             $this->message['error'] = true;
-            return $this->index();
+            return redirect('/pages');
         }
 
         // TODO : SEND AN ACTUAL SUCCESS MESSAGE 
         $this->message['message'] = "Record Added Succefully";
         $this->message['error'] = false;
-        return $this->index();
+        return redirect('/pages');
         
     }
     function show() {}
