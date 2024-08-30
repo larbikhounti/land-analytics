@@ -14,13 +14,6 @@ export default { layout: DashboardLayout };
 
 <template>
 
-    <p
-        :class="'text-red-500' > props.message.error"
-        class="text-green-600 font-bold"
-        v-if="!props.message.error"
-    >
-        {{ props.message.message }}
-    </p>
     <Link  class="button bg-black text-white my-2 max-w-28 p-2" href="/pages/create" method="get" as="a" type="button">Add page +</Link>
     <div class="flex flex-col">
         <Search :filter="props.filters"  />
