@@ -22,6 +22,7 @@ export default { layout: DashboardLayout }
 
 <template>
     <div class="flex flex-col gap-3 ">
+    <h1 class="font-bold text-2xl w-fit">New tracking</h1>
         <form  class="flex flex-col gap-3 p-5 w-2/4 bg-white" @submit.prevent="submitForm()">
         <label for="url">Url</label>
         <input id="url" placeholder="Enter url" class="p-3 border-2 bg-gray-100" name="url" type="text"
@@ -32,8 +33,8 @@ export default { layout: DashboardLayout }
         <input id="tracked-button" placeholder="Tracked Button id" class="p-3  bg-gray-100" name="tracking_button"
             type="text" v-model="form.tracked_button">
             <div class="text-red-600 font-bold" v-for="error in form.errors" >- {{ error }}</div>
-        <button class="border border-black p-2 hover:bg-black hover:text-white  " type="submit"
-            :disabled="form.processing">{{ form.processing ? "saving... " : "save" }}</button>
+        <button class="border border-black p-2 bg-black text-white " type="submit"
+            :disabled="form.processing">{{ form.processing ? "Saving... " : "Save" }}</button>
     </form>
     <div>
         <TrackingCode :tracked_button_id="props.tracked_button_id" :user_ad_id="props.user_ad_id" :page_ad_id="props.page_ad_id" />
