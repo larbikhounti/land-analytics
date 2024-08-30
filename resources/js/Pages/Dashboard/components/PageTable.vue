@@ -3,7 +3,7 @@ let props = defineProps(['isformVisible','pages'])
 </script>
 
 <template>
-    <table v-if="!props.isformVisible" class="table-fixed w-3/4 bg-white  overflow-scroll max-h-screen">
+    <table v-if="!props.isformVisible" class="table-fixed max-h-screen max-w-screen bg-white  overflow-scroll ">
             <thead>
                 <tr class="text-left bg-black text-white px-3 ">
                     <th class="p-2">Name</th>
