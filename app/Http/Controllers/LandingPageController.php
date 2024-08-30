@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
+
 class LandingPageController extends Controller
 {
     protected $message = array(
@@ -16,27 +17,32 @@ class LandingPageController extends Controller
 
     public function index(Request $request)
     {
-            return Inertia::render('Dashboard/Pages', [
-                'message' => $this->message,
-                'pages' => LandingPage::query()
-                    ->when($request->input('search'), function ($query, $search) {
-                        $query->where('name', 'like', "%{$search}%");
-                    })
-                    ->paginate(10)
-                    ->withQueryString()
-                    ->through(fn($page) => [
-                        'id' => $page->id,
-                        'name' => $page->name,
-                        'url' => $page->url,
-                        'tracked_button' => $page->tracked_button
-                    ]),
-    
-                'filters' => $request->only(['search']),
-            ]);
+        return Inertia::render('Dashboard/Pages', [
+            'message' => $this->message,
+            'pages' => LandingPage::query()
+                ->when($request->input('search'), function ($query, $search) {
+                    $query->where('name', 'like', "%{$search}%");
+                })
+                ->paginate(10)
+                ->withQueryString()
+                ->through(fn($page) => [
+                    'id' => $page->id,
+                    'name' => $page->name,
+                    'url' => $page->url,
+                    'tracked_button' => $page->tracked_button
+                ]),
+
+            'filters' => $request->only(['search']),
+        ]);
+    }
+
+    function create()
+    {
+        return inertia::render('Dashboard/components/PageForm');
     }
 
     function store(Request $request)
-    {     
+    {
         $request->validate([
             'url' => 'required|string|url',
             'name' => 'required|string|required',
@@ -50,7 +56,7 @@ class LandingPageController extends Controller
             "tracked_button" => $request->tracked_button
         ]);
         // TODO : IMPROVE ERROR HANDLING 
-        if(!$page instanceof LandingPage){
+        if (!$page instanceof LandingPage) {
             // TODO : SEND AN ACTUAL ERROR
             $this->message['message'] = "Something went Wrong";
             $this->message['error'] = true;
@@ -61,7 +67,6 @@ class LandingPageController extends Controller
         $this->message['message'] = "Record Added Succefully";
         $this->message['error'] = false;
         return redirect('/pages');
-        
     }
     function show() {}
 
