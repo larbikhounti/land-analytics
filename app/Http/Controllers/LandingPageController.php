@@ -24,11 +24,11 @@ class LandingPageController extends Controller
     }
 
     function store(Request $request)
-    {
+    {     
         $request->validate([
-            'url' => 'string|url',
-            'name' => 'string',
-            'trackedButton' => 'string'
+            'url' => 'required|string|url',
+            'name' => 'required|string|required',
+            'tracked_button' => 'required|string|required',
         ]);
         $user =  User::find(Auth::user()->id);
         $page =  $user->pages()->create([
