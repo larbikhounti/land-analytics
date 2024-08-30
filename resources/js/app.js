@@ -1,7 +1,12 @@
 import '../css/app.css'
+import 'highlight.js/styles/stackoverflow-light.css'
 import { createApp, h } from 'vue'
 import { createInertiaApp } from '@inertiajs/vue3'
-import PrimeVue from 'primevue/config';
+
+import hljs from 'highlight.js/lib/core';
+import javascript from 'highlight.js/lib/languages/javascript';
+import hljsVuePlugin from "@highlightjs/vue-plugin";
+hljs.registerLanguage('javascript', javascript);
 
 createInertiaApp({
   resolve: name => {
@@ -12,12 +17,8 @@ createInertiaApp({
   setup({ el, App, props, plugin }) {
     createApp({ render: () => h(App, props) })
       .use(plugin)
-      .use(PrimeVue, {
-        theme: {
-
-            unstyled: true
-        }
-    })
+      .use(hljsVuePlugin)
+      
       .mount(el)
   },
 })
