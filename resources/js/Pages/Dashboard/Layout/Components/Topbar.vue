@@ -1,5 +1,5 @@
 <script setup>
-import { user } from "../countables/auth";
+import { user } from "../../../countables/auth";
 </script>
 
 <template>

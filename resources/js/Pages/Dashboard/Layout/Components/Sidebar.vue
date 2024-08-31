@@ -1,5 +1,4 @@
 <script setup>
-import Splitter from 'primevue/splitter';
 import SideLinks from './SideLinks.vue';
 import { Link } from '@inertiajs/vue3';
 

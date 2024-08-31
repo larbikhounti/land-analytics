@@ -1,10 +1,10 @@
 <script setup>
 import { Link } from '@inertiajs/vue3';
 import { ref } from 'vue'
-import { pathname } from '../countables/utils';
+import { pathname } from '../../../countables/utils';
 
 const links = ref([
-    {href : "/dashboard", content : "Dashboard" },
+    {href : "/statics", content : "Statics" },
     {href : "/pages", content : "Pages" },
     {href : "/profile", content : "Profile" }
 ])
