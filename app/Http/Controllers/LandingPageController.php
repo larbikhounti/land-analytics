@@ -74,17 +74,39 @@ class LandingPageController extends Controller
             'message' => $this->message
         ]);
     }
-    function show() {}
+    function show(LandingPage $page) {
+        return inertia::render('Dashboard/components/PageForm',[
+            'method' => 'update',
+            'page' => $page
+        ]);
+    }
 
     // TODO : TEST THIS METHOD
     function update(Request $request, LandingPage $page)
     {
         $request->validate([
             'url' => 'string|url',
-            'name' => 'string'
+            'name' => 'string',
+            'tracker_button' => 'string'
         ]);
 
-        return $page->update($request->all());
+        $isSaved = $page->update($request->all());
+        if($isSaved){
+            return inertia::render('Dashboard/components/PageForm',[
+                'method' => 'update',
+                'page' => $page,
+                'message' => 'Saved Succesfully',
+                'status' => true #TODO: MAKE IT  AN ENUM 
+            ]);
+        }else {
+            return inertia::render('Dashboard/components/PageForm',[
+                'method' => 'update',
+                'page' => $page,
+                'message' => 'Saved Fail',
+                'status' => false #TODO: MAKE IT  AN ENUM 
+            ]);
+        }
+       
     }
 
 

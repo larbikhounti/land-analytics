@@ -7,7 +7,7 @@ function deletePage(pageId){
 }
 
 function editPage(pageId){
-    router.get(`/pages/${pageId}/edit`)
+    router.get(`/pages/${pageId}`)
 }
 
 </script>
