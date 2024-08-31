@@ -87,9 +87,11 @@ class LandingPageController extends Controller
         return $page->update($request->all());
     }
 
-    // TODO : TEST THIS METHOD
+
     function destroy(LandingPage $page)
     {
-        return $page->delete();
+        if($page->delete()){
+            return redirect("/pages");
+        }
     }
 }
