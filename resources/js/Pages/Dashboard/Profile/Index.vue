@@ -1,7 +1,7 @@
 <script setup>
 </script>
 <script>
-import DashboardLayout from './DashboardLayout.vue';
+import DashboardLayout from '../Layout/DashboardLayout.vue';
 export default {layout : DashboardLayout}
 </script>
 
