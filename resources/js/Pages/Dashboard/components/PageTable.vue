@@ -16,6 +16,7 @@ function editPage(pageId){
     <table  class="table-fixed max-h-screen max-w-screen bg-white  overflow-scroll ">
             <thead>
                 <tr class="text-left bg-black text-white px-3 ">
+                    <th class="p-2">Id</th>
                     <th class="p-2">Name</th>
                     <th>Url</th>
                     <th>Views</th>
@@ -29,6 +30,7 @@ function editPage(pageId){
             </thead>
             <tbody>
                 <tr v-for="page in props.pages" :key="page.id">
+                    <td class="p-2">{{ page.id }}</td>
                     <td class="p-2">{{ page.name }}</td>
                     <td class="text-sm ">{{ page.url.slice(0, 30) }}</td>
                     <td>1961</td>
