@@ -1,14 +1,14 @@
 <script setup> 
-import Pagination from "./components/Pagination.vue";
-import Search from "./components/Search.vue";
-import PageTable from "./components/PageTable.vue";
+import Pagination from "./Components/Pagination.vue";
+import Search from "./Components/Search.vue";
+import PageTable from "./Components/PageTable.vue";
 import { Link } from "@inertiajs/vue3";
 
 let props = defineProps(["pages", "message", "filters"]);
 
 </script>
 <script>
-import DashboardLayout from "./DashboardLayout.vue";
+import DashboardLayout from "../Layout/DashboardLayout.vue";
 export default { layout: DashboardLayout };
 </script>
 

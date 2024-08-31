@@ -27,7 +27,7 @@ function editPage(pageId){
                     <th> </th>
                     <th> </th>
                 </tr>
-            </thead>
+            </thead>    
             <tbody>
                 <tr v-for="page in props.pages" :key="page.id">
                     <td class="p-2">{{ page.id }}</td>

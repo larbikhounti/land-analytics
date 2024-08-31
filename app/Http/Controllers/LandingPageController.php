@@ -17,7 +17,7 @@ class LandingPageController extends Controller
 
     public function index(Request $request)
     {
-        return Inertia::render('Dashboard/Pages', [
+        return Inertia::render('Dashboard/Pages/Index', [
             'pages' => LandingPage::query()
                 ->when($request->input('search'), function ($query, $search) {
                     $query->where('name', 'like', "%{$search}%");
@@ -37,7 +37,7 @@ class LandingPageController extends Controller
 
     function create()
     {
-        return inertia::render('Dashboard/components/PageForm');
+        return inertia::render('Dashboard/Pages/Add');
     }
 
     function store(Request $request)
@@ -59,7 +59,7 @@ class LandingPageController extends Controller
             // TODO : SEND AN ACTUAL ERROR
             $this->message['message'] = "Something went Wrong";
             $this->message['error'] = true;
-            return inertia::render('Dashboard/components/PageForm',[
+            return inertia::render('Dashboard/Pages/Add',[
                 'message' => $this->message
             ]);
         }
@@ -67,7 +67,7 @@ class LandingPageController extends Controller
         // TODO : SEND AN ACTUAL SUCCESS MESSAGE 
         $this->message['message'] = "Record Added Succefully";
         $this->message['error'] = false;
-        return inertia::render('Dashboard/components/PageForm',[
+        return inertia::render('Dashboard/Pages/Add',[
             'user_ad_id' => $user->ad_id,
             'page_ad_id' => $page->ad_id,
             'tracked_button_id' => $page->tracked_button,
@@ -75,7 +75,7 @@ class LandingPageController extends Controller
         ]);
     }
     function show(LandingPage $page) {
-        return inertia::render('Dashboard/components/PageForm',[
+        return inertia::render('Dashboard/Pages/Add',[
             'method' => 'update',
             'page' => $page
         ]);
@@ -92,14 +92,14 @@ class LandingPageController extends Controller
 
         $isSaved = $page->update($request->all());
         if($isSaved){
-            return inertia::render('Dashboard/components/PageForm',[
+            return inertia::render('Dashboard/Pages/Add',[
                 'method' => 'update',
                 'page' => $page,
                 'message' => 'Saved Succesfully',
                 'status' => true #TODO: MAKE IT  AN ENUM 
             ]);
         }else {
-            return inertia::render('Dashboard/components/PageForm',[
+            return inertia::render('Dashboard/Pages/Add',[
                 'method' => 'update',
                 'page' => $page,
                 'message' => 'Saved Fail',

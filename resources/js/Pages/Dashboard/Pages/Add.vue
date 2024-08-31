@@ -21,14 +21,14 @@ function submitForm() {
 }
 </script>
 <script>
-import DashboardLayout from "../DashboardLayout.vue"
-import TrackingCode from './TrackingCode.vue';
+import DashboardLayout from "../Layout/DashboardLayout.vue"
+import TrackingCode from './Components/TrackingCode.vue';
 export default { layout: DashboardLayout }
 </script>
 
 <template>
     <div class="flex flex-col gap-3 ">
-    <h1>{{ props.message }}</h1>
+    <h1>{{ props.message.message }}</h1>
         <form  class="flex flex-col gap-3 p-5 w-2/4 bg-white" @submit.prevent="submitForm()">
         <label for="url">Url</label>
         <input id="url" placeholder="Enter url" class="p-3 border-2 bg-gray-100" name="url" type="text"
