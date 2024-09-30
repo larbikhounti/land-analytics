@@ -9,7 +9,7 @@ import Topbar from './Components/Topbar.vue';
 <template>
     <div class="flex h-screen bg-gray-100">
         <!-- Main Content -->
-        <Sidebar />
+        <!-- <Sidebar /> -->
         <div class="flex-1 flex flex-col">
             <Topbar />
             <!-- Content -->
